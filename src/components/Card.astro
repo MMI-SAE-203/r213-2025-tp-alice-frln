@@ -1,6 +1,16 @@
 ---
+import '../css/base.css';
 const offre = Astro.props;
 ---
 
-<p>{offre.nomMaison}</p>
-<p>{offre.favori}</p>
+<div>
+    <h2>{offre.nomMaison}</h2>
+    <p>{offre.adresse}</p>
+    <p>{offre.favori}</p>
+    <p>{offre.id}</p>
+    <p>{offre.nbChambres}</p>
+    <p>{offre.nbSdb}</p>
+    <p>{offre.prix}</p>
+    <p>{offre.surface}</p>
+    <p>{offre.imgUrl}</p>
+</div>

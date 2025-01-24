@@ -45,6 +45,19 @@ const offres = [
             <li><Card {...offre}/></li>
                         )
             }
-            </ul>
+        </ul>
+    </div>
+    <div x-data="{ showFavorites: false }">
+        <button @click="showFavorites = !showFavorites">
+            <span x-show="!showFavorites">Afficher les favoris</span>
+            <span x-show="showFavorites">Afficher tout</span>
+        </button>
+    
+        <div x-show="!showFavorites">
+            {offres.map((offre) => <Card {...offre} />)}
+        </div>
+        <div x-show="showFavorites">
+            {offres.filter((offre) => offre.favori).map((offre) => <Card {...offre} />)}
+        </div>
     </div>
 </Base>
