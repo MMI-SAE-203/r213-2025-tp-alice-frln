@@ -1,19 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import Card from "../components/Card.astro";
+import { events } from "../js/backend.mjs"
 
-const events = [
- {
-     title: "Conférence sur les astres",
-     date: "Lundi 12 Juillet",
-     favori: true,
- },
- {
-     title: "Atelier sur les étoiles",
-     date: "Mardi 13 Juillet",
-     favori: false,
- },
-];
+console.log(events);
 ---
 <Base>
     {events.map((event) => (
