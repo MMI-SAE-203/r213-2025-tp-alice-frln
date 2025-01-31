@@ -42,7 +42,7 @@ const offres = await getOffres();
 // ]
 ---
 <Base titre="Offres" h1="Nos offres">
-    <div>
+    <!-- <div>
         <ul>
 
             {offres.map((offre) => 
@@ -50,7 +50,7 @@ const offres = await getOffres();
                         )
             }
         </ul>
-    </div>
+    </div> -->
     <div x-data="{ showFavorites: false }">
         <button @click="showFavorites = !showFavorites">
             <span x-show="!showFavorites">Afficher les favoris</span>
