@@ -3,16 +3,7 @@ import '../css/base.css';
 const offre = Astro.props;
 ---
 
-<div class="w-60 h-80 bg-gray-800 p-3 flex flex-col gap-1 rounded-br-3xl">
-    <span class="text-xl text-gray-50 font-bold">{offre.nomMaison}</span>
+<div>
+    <h2>{offre.nomMaison}</h2>
     <p>{offre.imgUrl}</p>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-row justify-between">
-            <div class="flex flex-col">
-                <p class="text-xs text-gray-400">{offre.adresse}<br>{offre.surface}<br>{offre.nbChambres} chambres<br>{offre.nbSdb} salles de bain<br>id :{offre.id}</p>
-              </div>
-              <span class="font-bold  text-red-600">{offre.prix}</span>
-        </div>
-        <button class="hover:bg-sky-700 text-gray-50 bg-sky-800 py-2 rounded-br-xl">Plus d'infos</button>
-    </div>
 </div>
