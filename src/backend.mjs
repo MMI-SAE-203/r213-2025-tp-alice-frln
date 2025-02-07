@@ -19,7 +19,7 @@ export async function getOffres() {
 
 export async function getOffre(id) {
     try {
-        let data = await pb.collection('maison').getOne(id);
+        let data = await pb.collection('Maison').getOne(id);
         data.img = pb.files.getURL(data, data.image);
         return data;
     } catch (error) {
@@ -27,3 +27,9 @@ export async function getOffre(id) {
         return null;
     }
 }
+
+
+export async function bySurface(s) {
+    const surfaceRecord = await pb.collection('Maison').getFullList({ filter : `surface> ${s}`, }) ;
+    return surfaceRecord ;
+    }
