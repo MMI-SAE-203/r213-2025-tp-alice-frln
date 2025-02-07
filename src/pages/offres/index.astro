@@ -7,7 +7,7 @@ import { getOffres } from '../../backend.mjs';
 const offres = await getOffres();
 ---
 
-<Base titre="Offres" h1="Noq offres">
+<Base titre="Offres" h1="Nos offres">
     <div
       class="text-indigo-950"
       x-data="{ showFavorites: false, viewMode: 'grid' }"
@@ -49,6 +49,6 @@ const offres = await getOffres();
       >
         {offres.map((offre) => offre.favori && <Card {...offre} />)}
       </div>
-      <a href=`/offres/surface/300`>Voir les maisons avec une superficie supérieur à 300m2</a>
+      <a href=`/offres/surface/300` class="text-white bg-purple-900 font-bold py-1 px-2 rounded">Voir les maisons avec une superficie supérieur à 300m2</a>
     </div>
   </Base>
