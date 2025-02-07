@@ -1,12 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Card from "../components/Card.astro";
-import { events } from "../backend.mjs"
+import { getOffres } from "../backend.mjs"
 
+const events = await getOffres();
 console.log(events);
 ---
 <Base>
-    {events.map((event) => (
+    {events?.map((event) => (
         <Card title={event.title} date={event.date} favori={event.favori} />
     )
 )}
