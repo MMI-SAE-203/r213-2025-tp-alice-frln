@@ -5,6 +5,6 @@ const offre = Astro.props;
 
 <div>
     <h2>{offre.nomMaison}</h2>
-    <img src={offre.img} alt="/"/>
+    <img src={offre.img} alt="/" class: "block rounded-t-lg overflow-hidden"/>
     <a href={`/offres/${offre.id}`}>Voir plus</a>
 </div>

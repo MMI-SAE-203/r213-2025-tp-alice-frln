@@ -5,64 +5,50 @@ import Base from '../../layouts/Base.astro';
 import { getOffres } from '../../backend.mjs';
 
 const offres = await getOffres();
-// const offres = [
-//     {
-//         "adresse": "2821 Lake Sevilla, Palm Harbor, TX",
-//         "favori": true,
-//         "id": "64l3n8nar836i5j",
-//         "nbChambres": 4,
-//         "nbSdb": 2,
-//         "nomMaison": "Beverly Springfield",
-//         "prix": 2700,
-//         "surface": 45,
-//         "imgUrl": "image1.png"
-//     },
-//     {
-//         "adresse": "2699 Green Valley, Highland Lake",
-//         "favori": true,
-//         "id": "lo831zeg10hpm9y",
-//         "nbChambres": 4,
-//         "nbSdb": 2,
-//         "nomMaison": "Palm Harbor",
-//         "prix": 2095,
-//         "surface": 42,
-//         "imgUrl": "image2.png"
-//     },
-//     {
-//         "adresse": "909 Woodland St, Michigan, IN",
-//         "favori": false,
-//         "id": "s1zuhj19x8eb242",
-//         "nbChambres": 4,
-//         "nbSdb": 3,
-//         "nomMaison": "Faulkner Ave",
-//         "prix": 4550,
-//         "surface": 80,
-//         "imgUrl": "image3.png"
-//     }
-// ]
 ---
-<Base titre="Offres" h1="Nos offres">
-    <!-- <div>
-        <ul>
 
-            {offres.map((offre) => 
-            <li><Card {...offre}/></li>
-                        )
-            }
-        </ul>
-    </div> -->
-    <div x-data="{ showFavorites: false }">
-        <button @click="showFavorites = !showFavorites">
-            <span x-show="!showFavorites">Afficher les favoris</span>
-            <span x-show="showFavorites">Afficher tout</span>
+<Base titre="Offres" h1="Noq offres">
+    <div
+      class="text-indigo-950"
+      x-data="{ showFavorites: false, viewMode: 'grid' }"
+    >
+      <button
+        class="text-white bg-purple-900 font-bold py-1 px-2 rounded"
+        @click="showFavorites = !showFavorites"
+      >
+        <span x-show="!showFavorites">Afficher les favoris</span>
+        <span x-show="showFavorites">Afficher tout</span>
+      </button>
+  
+      <div class="pt-5">
+        <button
+          @click="viewMode = 'grid'"
+          :class="viewMode === 'grid' ? 'bg-white text-purple-400 border border-purple-400' : 'bg-purple-400 text-white'"
+          class="bg-indigo-400 font-semibold py-1 px-2 rounded"
+        >
+          Grille
         </button>
-    
-        <div x-show="!showFavorites">
-            {offres.map((offre) => <Card {...offre} />)}
-        </div>
-        <div x-show="showFavorites">
-            {offres.filter((offre) => offre.favori).map((offre) => <Card {...offre} />)}
-        </div>
+        <button
+          @click="viewMode = 'list'"
+          :class="viewMode === 'list' ? 'bg-white text-purple-400 border border-purple-400' : 'bg-purple-400 text-white'"
+          class="bg-indigo-400 font-semibold py-1 px-2 rounded"
+        >
+          Liste
+        </button>
+      </div>
+  
+      <div
+        x-show="!showFavorites"
+        :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+      >
+        {offres.map((offre) => <Card {...offre} />)}
+      </div>
+      <div
+        x-show="showFavorites"
+        :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+      >
+        {offres.map((offre) => offre.favori && <Card {...offre} />)}
+      </div>
+      <a href=`/offres/surface/300`>Voir les maisons avec une superficie supérieur à 300m2</a>
     </div>
-    <a href=`/offres/surface/300`>Voir les maisons avec une superficie supérieur à 300m2</a>
-</Base>
+  </Base>
