@@ -10,9 +10,13 @@ if(!offre){
 ---
 
 <Base titre={offre.nomMaison}>
+    <img src={offre.img} alt="/"/>
     <h2>{offre.nomMaison}</h2>
     <ul>
-        <li>{offre.adresse}</li>
-        ...
+        <li>Prix : {offre.prix}</li>
+        <li>Surface : {offre.surface}</li>
+        <li>Adresse : {offre.adresse}</li>
+        <li>Nombre de chambres : {offre.nbChambres}</li>
+        <li>Nombre de salles de bain : {offre.nbSdb}</li>
     </ul>
 </Base>
