@@ -41,14 +41,14 @@ const offres = await getOffres();
         x-show="!showFavorites"
         :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
       >
-        {offres.map((offre) => <Card {...offre} />)}
+        {offres && offres.map((offre) => <Card {...offre} />)}
       </div>
       <div
         x-show="showFavorites"
         :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
       >
-        {offres.map((offre) => offre.favori && <Card {...offre} />)}
+        {offres && offres.map((offre) => offre.favori && <Card {...offre} />)}
       </div>
-      <a href=`/offres/surface/300` class="text-white bg-purple-900 font-bold py-1 px-2 rounded">Voir les maisons avec une superficie supérieur à 300m2</a>
+      <a href="/offres/surface/300" class="text-white bg-purple-900 font-bold py-1 px-2 rounded">Voir les maisons avec une superficie supérieur à 300m2</a>
     </div>
   </Base>
