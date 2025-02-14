@@ -1,5 +1,7 @@
 ---
 import { addOffre } from '../../backend.mjs';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 let message = '';
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
@@ -7,6 +9,7 @@ if (Astro.request.method === "POST") {
     message = response.message;
 }
 ---
+<Header/>
 <h1 class="text-lg">Ajouter une offre</h1>
 <p>{message}</p>
 <form action="/offres/add" method="POST" enctype="multipart/form-data">
@@ -19,3 +22,4 @@ if (Astro.request.method === "POST") {
     <input type="file" name="image"  />
     <button type="submit">Ajouter</button>
 </form>
+<Footer/>

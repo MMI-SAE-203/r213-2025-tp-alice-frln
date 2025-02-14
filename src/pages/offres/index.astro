@@ -32,10 +32,15 @@ if (Astro.request.method === "POST") {
 
 <Base titre="Offres" h1="Nos offres">
   <p>{message}</p>
-  <form action="/offres" method="POST">
-    <input type="number" name="minPrix" placeholder="Prix minimum" />
-    <input type="number" name="maxPrix" placeholder="Prix maximum" />
-    <input type="submit" value="Filtrer par prix" />
+  <form action="/offres" method="POST" class="flex flex-wrap items-center gap-4 bg-white p-4 rounded-lg shadow-md">
+    <input type="number" name="minPrix" placeholder="Prix minimum" 
+        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" />
+
+    <input type="number" name="maxPrix" placeholder="Prix maximum" 
+        class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none" />
+
+    <input type="submit" value="Filtrer par prix" 
+        class="px-5 py-2 text-white font-bold shadow-md cursor-pointer bg-gradient-to-bl from-purple-500 to-purple-800 rounded-lg hover:scale-105 transition" />
   </form>
   <div
     class="text-indigo-950"

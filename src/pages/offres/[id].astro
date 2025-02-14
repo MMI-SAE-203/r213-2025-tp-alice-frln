@@ -10,13 +10,18 @@ if(!offre){
 ---
 
 <Base titre={offre.nomMaison}>
-    <img src={offre.img} alt="/"/>
-    <h2>{offre.nomMaison}</h2>
-    <ul>
-        <li>Prix : {offre.prix}</li>
-        <li>Surface : {offre.surface}</li>
-        <li>Adresse : {offre.adresse}</li>
-        <li>Nombre de chambres : {offre.nbChambres}</li>
-        <li>Nombre de salles de bain : {offre.nbSdb}</li>
-    </ul>
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg flex flex-col md:flex-row gap-6">
+        <img src={offre.img} alt="/" class="w-full md:w-1/2 rounded-lg object-cover shadow-md"/>
+
+        <div class="flex flex-col justify-center">
+            <h2 class="text-2xl font-bold text-gray-800">{offre.nomMaison}</h2>
+            <ul class="mt-4 space-y-2 text-gray-700">
+                <li><span class="font-semibold">Prix :</span> {offre.prix}€</li>
+                <li><span class="font-semibold">Surface :</span> {offre.surface} m²</li>
+                <li><span class="font-semibold">Adresse :</span> {offre.adresse}</li>
+                <li><span class="font-semibold">Nombre de chambres :</span> {offre.nbChambres}</li>
+                <li><span class="font-semibold">Nombre de salles de bain :</span> {offre.nbSdb}</li>
+            </ul>
+        </div>
+    </div>
 </Base>
