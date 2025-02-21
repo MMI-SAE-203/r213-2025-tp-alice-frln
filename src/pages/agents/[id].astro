@@ -1,0 +1,28 @@
+---
+import { allMaisonsByAgentId } from '../../backend.mjs';
+import Card from '../../components/Card.astro';
+import Base  from '../../layouts/Base.astro';
+
+const { id } = Astro.params;
+const offres = await allMaisonsByAgentId(id);
+if(!offres){
+   return Astro.redirect('/agents');
+}
+---
+
+<Base>
+
+<div
+      x-show="!showFavorites"
+      :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+    >
+      {offres && offres.map((offre) => <Card {...offre} />)}
+    </div>
+    <div
+      x-show="showFavorites"
+      :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+    >
+      {offres && offres.map((offre) => offre.favori && <Card {...offre} />)}
+    </div>
+
+</Base>

@@ -80,3 +80,15 @@ export async function getAgents() {
         return null;
     }
 }
+
+export async function allMaisonsByAgentId(id) {
+    let SortedAgentRecord = await pb.collection('Maison').getFullList({
+        filter : `agent_charge.id= '${id}'`,
+        expand : 'agent_charge'
+    });
+    SortedAgentRecord = SortedAgentRecord.map((maison) => {
+        maison.img = pb.files.getURL(maison, maison.image);
+        return maison;
+    });
+    return SortedAgentRecord ;
+}

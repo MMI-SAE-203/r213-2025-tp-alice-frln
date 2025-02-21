@@ -2,13 +2,14 @@
 import Base from "../layouts/Base.astro";
 import Card from "../components/Card.astro";
 import { getOffres } from "../backend.mjs"
+import type { ACTION_ERROR_CODES, ACTION_QUERY_PARAMS } from "astro:actions";
 
 const events = await getOffres();
 console.log(events);
 ---
 <Base>
     {events?.map((event) => (
-        <Card title={event.title} date={event.date} favori={event.favori} />
+        <Card {...event} />
     )
 )}
 </Base>
