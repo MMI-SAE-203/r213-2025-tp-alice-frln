@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Agentcard.astro';
+import { getAgents } from '../../backend.mjs';
+let message = '';
+
+const agents = await getAgents();
+console.log(agents);
+
+
+---
+
+<Base titre="Agent" h1="Nos agents">
+  <p>{message}</p>
+  
+    <button
+      class="text-white bg-purple-900 font-bold py-1 px-2 rounded"
+      @click="showFavorites = !showFavorites"
+    >
+      <span x-show="!showFavorites">Afficher les favoris</span>
+      <span x-show="showFavorites">Afficher tout</span>
+    </button>
+
+    <div class="pt-5">
+      <button
+        @click="viewMode = 'grid'"
+        :class="viewMode === 'grid' ? 'bg-white text-purple-400 border border-purple-400' : 'bg-purple-400 text-white'"
+        class="bg-indigo-400 font-semibold py-1 px-2 rounded"
+      >
+        Grille
+      </button>
+      <button
+        @click="viewMode = 'list'"
+        :class="viewMode === 'list' ? 'bg-white text-purple-400 border border-purple-400' : 'bg-purple-400 text-white'"
+        class="bg-indigo-400 font-semibold py-1 px-2 rounded"
+      >
+        Liste
+      </button>
+    </div>
+
+    <div
+      x-show="!showFavorites"
+      :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+    >
+      {agents && agents.map((agent) => <Card {...agent} />)}
+    </div>
+    <div
+      x-show="showFavorites"
+      :class="viewMode === 'grid' ? 'grid grid-cols-1 lg:grid-cols-3 gap-4' : 'flex flex-col'"
+    >
+      {agents && agents.map((agent) => agent.favori && <Card {...agent} />)}
+    </div>
+  </div>
+  </Base>

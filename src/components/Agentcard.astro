@@ -1,0 +1,12 @@
+---
+import '../css/base.css';
+const offre = Astro.props;
+---
+
+<div class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white p-4">
+    <h2 class="text-xl font-semibold text-gray-800 mt-2">{offre.nomMaison}</h2>
+    <a href={`/offres/${offre.id}`}  
+       class="mt-4 inline-block cursor-pointer text-white font-bold shadow-md hover:scale-[1.1] shadow-purple-400 rounded-full px-5 py-2 bg-gradient-to-bl from-purple-500 to-purple-800 transition-transform">
+        Voir plus
+    </a>
+</div>
